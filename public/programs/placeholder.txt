@@ -1,0 +1,11 @@
+This is a placeholder for program PDF files.
+
+In a production environment, this directory would contain actual PDF files for:
+- Strength Fundamentals
+- Hypertrophy Basics
+- Fat Loss Nutrition Guide
+- Muscle Building Meal Plan
+- Weekend Warrior Guide
+- Habit Formation System
+
+These files would be downloadable from the Programs section of the website.
