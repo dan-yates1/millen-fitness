@@ -76,7 +76,7 @@ export default function BlogPage() {
   return (
     <Layout>
       {/* Back Link - Moved above Section */}
-      <div className="container mx-auto px-6 pt-32 pb-6"> {/* Added container and padding */}
+      <div className="container mx-auto px-6 pt-16 pb-6"> {/* Added container and padding */}
         <Link
           href="/#blog"
           className="inline-flex items-center text-accent hover:underline" // Style matches slug page

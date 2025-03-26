@@ -103,7 +103,7 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <Layout>
-        <Section className="pt-162">
+        <Section className="pt-16">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">Blog Post Not Found</h1>
             <p className="mb-8">
