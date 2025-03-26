@@ -4,7 +4,6 @@ import About from '@/components/sections/About';
 import Services from '@/components/sections/Services';
 import Programs from '@/components/sections/Programs';
 import Testimonials from '@/components/sections/Testimonials';
-import Blog from '@/components/sections/Blog';
 import InstagramFeed from '@/components/sections/InstagramFeed'; // Import InstagramFeed
 import Contact from '@/components/sections/Contact';
 
