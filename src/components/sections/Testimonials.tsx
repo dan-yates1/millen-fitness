@@ -1,3 +1,4 @@
+import Image from "next/image"; // Import Image component
 import Section from "../ui/Section";
 
 const Testimonials = () => {
@@ -61,12 +62,15 @@ const Testimonials = () => {
       <div className="mt-12 text-center">
         <h3 className="text-2xl font-bold mb-6">Transformation Results</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {/* Transformation Card 1 */}
           <div className="bg-background border border-accent/20 rounded-lg overflow-hidden">
-            <div className="aspect-w-16 aspect-h-9 bg-highlight/20 w-full h-64 flex items-center justify-center">
-              {/* Placeholder for before/after image */}
-              <p className="text-lg font-medium">
-                Before / After Transformation
-              </p>
+            <div className="relative aspect-w-16 aspect-h-9 w-full h-64"> {/* Added relative positioning */}
+              <Image
+                src="/testimonials/transformation-1.jpg"
+                alt="Client transformation 1"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <div className="p-4">
               <p className="font-medium text-gray-800">
@@ -77,12 +81,15 @@ const Testimonials = () => {
               </p>
             </div>
           </div>
+          {/* Transformation Card 2 */}
           <div className="bg-background border border-accent/20 rounded-lg overflow-hidden">
-            <div className="aspect-w-16 aspect-h-9 bg-highlight/20 w-full h-64 flex items-center justify-center">
-              {/* Placeholder for before/after image */}
-              <p className="text-lg font-medium text-gray-800">
-                Before / After Transformation
-              </p>
+            <div className="relative aspect-w-16 aspect-h-9 w-full h-64"> {/* Added relative positioning */}
+              <Image
+                src="/testimonials/transformation-2.jpg"
+                alt="Client transformation 2"
+                layout="fill"
+                objectFit="cover"
+              />
             </div>
             <div className="p-4">
               <p className="font-medium text-gray-800">

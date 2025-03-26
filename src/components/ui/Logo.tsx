@@ -25,9 +25,8 @@ const Logo = ({ size = 'md', withText = true }: LogoProps) => {
   return (
     <Link href="/" className="flex items-center align-middle">
       {/* Diamond shape with MF text */}
-      <div className={`${sizeMap[size].container} bg-highlight flex items-center justify-center rounded-full`}>
-        {/* <span className="font-bold text-foreground">MF</span> */}
-        <img src='/mf-logo.jpg' width={150} height={150} />
+      <div className={`${sizeMap[size].container} flex items-center justify-center rounded-full`}>
+        <img src='/logo.svg' width={300} height={300} />
       </div>
       
       {/* Optional text */}
