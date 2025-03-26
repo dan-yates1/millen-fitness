@@ -6,7 +6,7 @@ const Hero = () => {
     <section
       id="hero"
       className="relative py-20 md:py-32 overflow-hidden bg-cover bg-center bg-no-repeat"
-      style={{ backgroundImage: `url('/hero-bg.jpg')` }}
+      style={{ backgroundImage: `url('/hero-bg-2.jpeg')` }}
     >
       {/* Dark overlay for the background image */}
       <div className="absolute inset-0 bg-black/50 z-10"></div>
