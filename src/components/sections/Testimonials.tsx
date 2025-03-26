@@ -69,7 +69,7 @@ const Testimonials = () => {
               </p>
             </div>
             <div className="p-4">
-              <p className="font-medium text-gray-800 dark:text-white">
+              <p className="font-medium text-gray-800">
                 12-Week Transformation
               </p>
               <p className="text-accent text-sm">
@@ -80,12 +80,12 @@ const Testimonials = () => {
           <div className="bg-background border border-accent/20 rounded-lg overflow-hidden">
             <div className="aspect-w-16 aspect-h-9 bg-highlight/20 w-full h-64 flex items-center justify-center">
               {/* Placeholder for before/after image */}
-              <p className="text-lg font-medium text-gray-800 dark:text-white">
+              <p className="text-lg font-medium text-gray-800">
                 Before / After Transformation
               </p>
             </div>
             <div className="p-4">
-              <p className="font-medium text-gray-800 dark:text-white">
+              <p className="font-medium text-gray-800">
                 8-Week Transformation
               </p>
               <p className="text-accent text-sm">

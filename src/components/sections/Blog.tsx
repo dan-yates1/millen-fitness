@@ -1,3 +1,4 @@
+import Image from 'next/image'; // Import Image component
 import Section from '../ui/Section';
 import Button from '../ui/Button';
 import { GymIcon, NutritionIcon, LifestyleIcon } from '../ui/Icon';
@@ -11,6 +12,7 @@ const Blog = () => {
       date: 'March 15, 2025',
       category: 'nutrition',
       icon: <NutritionIcon size={20} className="text-accent" />,
+      imageUrl: '/blog/blog-example.jpg', // Add image URL
     },
     {
       id: 'workout-efficiency',
@@ -19,6 +21,7 @@ const Blog = () => {
       date: 'March 8, 2025',
       category: 'gym',
       icon: <GymIcon size={20} className="text-accent" />,
+      imageUrl: '/blog/blog-example.jpg', // Add image URL
     },
     {
       id: 'weekend-balance',
@@ -27,6 +30,7 @@ const Blog = () => {
       date: 'February 28, 2025',
       category: 'lifestyle',
       icon: <LifestyleIcon size={20} className="text-accent" />,
+      imageUrl: '/blog/blog-example.jpg', // Add image URL
     },
   ];
 
@@ -43,10 +47,17 @@ const Blog = () => {
             key={post.id}
             className="bg-background border border-accent/20 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
           >
-            {/* Placeholder for blog post image */}
-            <div className="h-48 bg-highlight/10 flex items-center justify-center">
-              <span className="text-xl font-bold">Blog Image</span>
-            </div>
+            {/* Blog post image */}
+            {post.imageUrl && (
+              <div className="relative w-full h-48">
+                <Image
+                  src={post.imageUrl}
+                  alt={post.title}
+                  layout="fill"
+                  objectFit="cover"
+                />
+              </div>
+            )}
             
             <div className="p-6">
               <div className="flex items-center mb-3">
@@ -72,7 +83,7 @@ const Blog = () => {
       </div>
       
       <div className="mt-10 text-center">
-        <Button href="/blog" variant="primary">
+        <Button href="/blog" variant="secondary">
           View All Posts
         </Button>
       </div>

@@ -23,17 +23,17 @@ const Logo = ({ size = 'md', withText = true }: LogoProps) => {
   };
 
   return (
-    <Link href="/" className="flex items-center">
+    <Link href="/" className="flex items-center align-middle">
       {/* Diamond shape with MF text */}
       <div className={`${sizeMap[size].container} bg-highlight flex items-center justify-center rounded-full`}>
         {/* <span className="font-bold text-foreground">MF</span> */}
-        <img src='/mf-logo.jpg' width={200} height={200} />
+        <img src='/mf-logo.jpg' width={150} height={150} />
       </div>
       
       {/* Optional text */}
       {withText && (
         <span className={`ml-2 font-bold ${sizeMap[size].text}`}>
-          <span className="text-accent">Millen</span> Fitness
+          <span>Millen</span> Fitness
         </span>
       )}
     </Link>

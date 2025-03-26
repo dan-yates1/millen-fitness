@@ -1,6 +1,9 @@
 "use client";
 
+"use client";
+
 import { useParams } from "next/navigation";
+import Image from "next/image"; // Import the Image component
 import Layout from "@/components/Layout";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
@@ -33,6 +36,7 @@ const blogPosts = [
     date: "March 15, 2025",
     category: "nutrition",
     icon: <NutritionIcon size={20} className="text-accent" />,
+    imageUrl: "/blog/blog-example.jpg", // Add image URL
   },
   {
     id: "workout-efficiency",
@@ -58,6 +62,7 @@ const blogPosts = [
     date: "March 8, 2025",
     category: "gym",
     icon: <GymIcon size={20} className="text-accent" />,
+    imageUrl: "/blog/blog-example.jpg", // Add image URL
   },
   {
     id: "weekend-balance",
@@ -83,6 +88,7 @@ const blogPosts = [
     date: "February 28, 2025",
     category: "lifestyle",
     icon: <LifestyleIcon size={20} className="text-accent" />,
+    imageUrl: "/blog/blog-example.jpg", // Add image URL
   },
 ];
 
@@ -97,14 +103,14 @@ export default function BlogPostPage() {
   if (!post) {
     return (
       <Layout>
-        <Section className="pt-32">
+        <Section className="pt-162">
           <div className="text-center">
             <h1 className="text-3xl font-bold mb-4">Blog Post Not Found</h1>
             <p className="mb-8">
               The blog post you&apos;re looking for doesn&apos;t exist or has
               been moved.
             </p>
-            <Button href="/blog" variant="primary">
+            <Button href="/blog" variant="secondary">
               Back to Blog
             </Button>
           </div>
@@ -115,7 +121,7 @@ export default function BlogPostPage() {
 
   return (
     <Layout>
-      <Section className="pt-32">
+      <Section className="pt-16">
         <div className="max-w-3xl mx-auto">
           <Link
             href="/blog"
@@ -135,22 +141,30 @@ export default function BlogPostPage() {
               <span className="text-sm text-accent">{post.date}</span>
             </div>
 
-            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800 dark:text-white">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
               {post.title}
             </h1>
-            <p className="text-xl text-gray-700 dark:text-gray-300">
+            <p className="text-xl text-gray-700">
               {post.excerpt}
             </p>
           </div>
 
           {/* Featured image */}
-          <div className="w-full h-64 md:h-96 bg-highlight/10 rounded-lg mb-8 flex items-center justify-center">
-            <span className="text-xl font-bold">Featured Image</span>
-          </div>
+          {post.imageUrl && (
+            <div className="relative w-full h-64 md:h-96 rounded-lg mb-8 overflow-hidden">
+              <Image
+                src={post.imageUrl}
+                alt={post.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-lg"
+              />
+            </div>
+          )}
 
           {/* Blog post content */}
           <div
-            className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-accent prose-a:text-accent"
+            className="prose prose-lg max-w-none prose-headings:text-accent prose-a:text-accent"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 
@@ -191,7 +205,7 @@ export default function BlogPostPage() {
                         {relatedPost.category}
                       </span>
                     </div>
-                    <h3 className="text-lg font-bold mb-2 text-gray-800 dark:text-white">
+                    <h3 className="text-lg font-bold mb-2 text-gray-800">
                       {relatedPost.title}
                     </h3>
                     <Link

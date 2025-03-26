@@ -59,7 +59,7 @@ const Programs = () => {
     >
       <div className="mb-8 flex justify-center">
         <div className="inline-flex p-1 bg-highlight/10 rounded-full">
-          <button className="px-4 py-2 rounded-full bg-highlight text-foreground">All</button>
+          <button className="px-4 py-2 rounded-full bg-accent text-background">All</button>
           <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Gym</button>
           <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Nutrition</button>
           <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Lifestyle</button>

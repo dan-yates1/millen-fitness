@@ -3,11 +3,11 @@ import MobileNav from './MobileNav';
 import Logo from './ui/Logo';
 
 const navLinks = [
-  { href: '/', label: 'Home' },
+  // { href: '/', label: 'Home' }, // Removed - Logo links home
   { href: '/#about', label: 'About' },
   { href: '/#services', label: 'Services' },
   { href: '/#programs', label: 'Programs' },
-  { href: '/#testimonials', label: 'Testimonials' },
+  // { href: '/#testimonials', label: 'Testimonials' }, // Removed - Less critical for main nav
   { href: '/#blog', label: 'Blog' },
   { href: '/#contact', label: 'Contact' },
 ];
@@ -15,10 +15,9 @@ const navLinks = [
 const Header = () => {
   return (
     <header className="bg-background text-foreground sticky top-0 z-50 shadow-md">
-      <div className="container mx-auto px-6 py-4">
+      <div className="container mx-auto px-6">
         <nav className="flex justify-between items-center">
-          <Logo />
-          
+          <Logo size='lg' withText={false} />
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-6">
             {navLinks.map((link) => (
