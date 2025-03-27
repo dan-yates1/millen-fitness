@@ -1,24 +1,41 @@
-import Link from 'next/link'; // Import Link
+// This is now a Server Component
+
+import React from 'react'; // Keep React import for JSX
+import Link from 'next/link';
 import Layout from '@/components/Layout';
 import Section from '@/components/ui/Section';
-import Button from '@/components/ui/Button';
-import { GymIcon, NutritionIcon, LifestyleIcon } from '@/components/ui/Icon';
+import { GymIcon, NutritionIcon, LifestyleIcon } from '@/components/ui/Icon'; // Import Icons here
+import BlogListClient from '@/components/blog/BlogListClient'; // Import the new Client Component
 
+// Metadata export remains here
 export const metadata = {
   title: 'Blog - Millen Fitness',
   description: 'Fitness tips, insights, and advice from Millen Fitness',
 };
 
-const blogPosts = [
-  {
+// Define the structure of a blog post (can be shared or defined elsewhere)
+interface BlogPost {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string; // Keep content if needed for future server-side rendering, otherwise remove
+  date: string;
+  category: string;
+  icon: React.JSX.Element; // Icon elements are defined here
+  imageUrl: string;
+}
+
+// Define the blog posts data here in the Server Component
+const allBlogPosts: BlogPost[] = [
+    {
     id: 'nutrition-myths',
     title: 'Top 5 Nutrition Myths Debunked',
     excerpt: 'Separating fact from fiction when it comes to nutrition advice and diet trends.',
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.',
     date: 'March 15, 2025',
     category: 'nutrition',
-    icon: <NutritionIcon size={20} className="text-accent" />,
-    imageUrl: '/blog/blog-example.jpg', // Add image URL
+    icon: <NutritionIcon size={20} className="text-accent" />, // Define icon element
+    imageUrl: '/blog/blog-example.jpg',
   },
   {
     id: 'workout-efficiency',
@@ -27,8 +44,8 @@ const blogPosts = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.',
     date: 'March 8, 2025',
     category: 'gym',
-    icon: <GymIcon size={20} className="text-accent" />,
-    imageUrl: '/blog/blog-example.jpg', // Add image URL
+    icon: <GymIcon size={20} className="text-accent" />, // Define icon element
+    imageUrl: '/blog/blog-example.jpg',
   },
   {
     id: 'weekend-balance',
@@ -37,8 +54,8 @@ const blogPosts = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.',
     date: 'February 28, 2025',
     category: 'lifestyle',
-    icon: <LifestyleIcon size={20} className="text-accent" />,
-    imageUrl: '/blog/blog-example.jpg', // Add image URL
+    icon: <LifestyleIcon size={20} className="text-accent" />, // Define icon element
+    imageUrl: '/blog/blog-example.jpg',
   },
   {
     id: 'protein-intake',
@@ -47,8 +64,8 @@ const blogPosts = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.',
     date: 'February 20, 2025',
     category: 'nutrition',
-    icon: <NutritionIcon size={20} className="text-accent" />,
-    imageUrl: '/blog/blog-example.jpg', // Add image URL
+    icon: <NutritionIcon size={20} className="text-accent" />, // Define icon element
+    imageUrl: '/blog/blog-example.jpg',
   },
   {
     id: 'cardio-myths',
@@ -57,8 +74,8 @@ const blogPosts = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.',
     date: 'February 15, 2025',
     category: 'gym',
-    icon: <GymIcon size={20} className="text-accent" />,
-    imageUrl: '/blog/blog-example.jpg', // Add image URL
+    icon: <GymIcon size={20} className="text-accent" />, // Define icon element
+    imageUrl: '/blog/blog-example.jpg',
   },
   {
     id: 'mindful-eating',
@@ -67,74 +84,32 @@ const blogPosts = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl. Sed euismod, nisl vel ultricies lacinia, nisl nisl aliquam nisl, eu aliquam nisl nisl eu nisl.',
     date: 'February 5, 2025',
     category: 'lifestyle',
-    icon: <LifestyleIcon size={20} className="text-accent" />,
-    imageUrl: '/blog/blog-example.jpg', // Add image URL
+    icon: <LifestyleIcon size={20} className="text-accent" />, // Define icon element
+    imageUrl: '/blog/blog-example.jpg',
   },
 ];
 
 export default function BlogPage() {
+  // This component now only renders the layout and passes data down
   return (
     <Layout>
-      {/* Back Link - Moved above Section */}
-      <div className="container mx-auto px-6 pt-16 pb-6"> {/* Added container and padding */}
+      {/* Back Link */}
+      <div className="container mx-auto px-6 pt-16 pb-6">
         <Link
           href="/#blog"
-          className="inline-flex items-center text-accent hover:underline" // Style matches slug page
+          className="inline-flex items-center text-accent hover:underline"
         >
           <span className="mr-2">←</span> Back to Home
         </Link>
       </div>
 
       <Section
-        title="All Blog Posts" // Updated title
+        title="All Blog Posts"
         subtitle="Latest tips, insights, and advice to help you on your fitness journey"
-        className="pt-0" // Removed top padding as it's handled above
+        className="pt-0"
       >
-        {/* Category Filters */}
-        <div className="mb-8 flex justify-center">
-          <div className="inline-flex p-1 bg-highlight/10 rounded-full">
-            <button className="px-4 py-2 rounded-full bg-accent text-white">All</button>
-            <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Gym</button>
-            <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Nutrition</button>
-            <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Lifestyle</button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogPosts.map((post) => (
-            <div
-              key={post.id}
-              className="bg-background border border-accent/20 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
-            >
-              {/* Placeholder for blog post image */}
-              <div className="h-48 bg-highlight/10 flex items-center justify-center">
-                <span className="text-xl font-bold">Blog Image</span>
-              </div>
-              
-              <div className="p-6">
-                <div className="flex items-center mb-3">
-                  <div className="mr-2">
-                    {post.icon}
-                  </div>
-                  <span className="text-xs uppercase tracking-wider text-accent">
-                    {post.category}
-                  </span>
-                  <span className="mx-2 text-accent">•</span>
-                  <span className="text-xs text-accent">{post.date}</span>
-                </div>
-                
-                <h3 className="text-xl font-bold mb-2 text-gray-800">{post.title}</h3>
-                <p className="mb-4 text-gray-700">{post.excerpt}</p>
-                
-                <Button href={`/blog/${post.id}`} variant="outline" className="w-full text-gray-800">
-                  Read More
-                </Button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Removed Button from here */}
+        {/* Render the Client Component and pass the posts data */}
+        <BlogListClient initialPosts={allBlogPosts} />
       </Section>
     </Layout>
   );
