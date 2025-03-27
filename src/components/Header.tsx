@@ -8,7 +8,7 @@ const navLinks = [
   { href: '/#services', label: 'Services' },
   { href: '/#programs', label: 'Programs' },
   // { href: '/#testimonials', label: 'Testimonials' }, // Removed - Less critical for main nav
-  { href: '/#blog', label: 'Blog' },
+  { href: '/blog', label: 'Blog' },
   { href: '/#contact', label: 'Contact' },
 ];
 

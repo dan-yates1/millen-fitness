@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -15,7 +15,14 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Millen Fitness - Online Transformation Coach",
-  description: "Millen Galliven - Online Transformation Coach helping people stay lean without sacrificing their weekend. Offering online coaching, meal planning, and gym programs.",
+  description:
+    "Millen Galliven - Online Transformation Coach helping people stay lean without sacrificing their weekend. Offering online coaching, meal planning, and gym programs.",
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export default function RootLayout({

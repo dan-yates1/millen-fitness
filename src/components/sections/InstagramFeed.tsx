@@ -7,8 +7,8 @@ const InstagramFeed = () => {
   // Using the same image multiple times as requested
   const posts = [
     { id: 1, imageUrl: '/instagram/insta-post-1.jpeg', postUrl: 'https://www.instagram.com/p/DFV9VtTOVJi/' },
-    { id: 2, imageUrl: '/instagram/insta-post-1.jpeg', postUrl: 'https://www.instagram.com/p/DFV9VtTOVJi/' },
-    { id: 3, imageUrl: '/instagram/insta-post-1.jpeg', postUrl: 'https://www.instagram.com/p/DFV9VtTOVJi/' },
+    { id: 2, imageUrl: '/instagram/insta-post-2.jpg', postUrl: 'https://www.instagram.com/p/DFV9VtTOVJi/' },
+    { id: 3, imageUrl: '/instagram/insta-post-3.jpg', postUrl: 'https://www.instagram.com/p/DFV9VtTOVJi/' },
     { id: 4, imageUrl: '/instagram/insta-post-1.jpeg', postUrl: 'https://www.instagram.com/p/DFV9VtTOVJi/' },
   ];
 

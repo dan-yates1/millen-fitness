@@ -1,16 +1,52 @@
 "use client";
 
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
 import Section from "../ui/Section";
 import Button from "../ui/Button";
 import { EmailIcon, InstagramIcon } from "../ui/Icon";
 
+type FormStatus = "idle" | "submitting" | "success" | "error";
+
 const Contact = () => {
-  // This is a placeholder function - in a real implementation, this would handle form submission
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [status, setStatus] = useState<FormStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // Form submission logic would go here
-    console.log("Form submitted");
+    setStatus("submitting");
+    setErrorMessage(null);
+
+    const formData = new FormData(e.currentTarget);
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      subject: formData.get("subject") as string,
+      message: formData.get("message") as string,
+    };
+
+    try {
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Something went wrong");
+      }
+
+      setStatus("success");
+      // Optionally reset the form
+      // e.currentTarget.reset();
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "An unknown error occurred.");
+      console.error("Form submission error:", error);
+    }
   };
 
   return (
@@ -82,9 +118,11 @@ const Contact = () => {
               <input
                 type="text"
                 id="name"
+                name="name" // Add name attribute
                 className="w-full px-4 py-2 bg-highlight/5 border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
                 placeholder="Your name"
                 required
+                disabled={status === "submitting"}
               />
             </div>
 
@@ -95,9 +133,11 @@ const Contact = () => {
               <input
                 type="email"
                 id="email"
+                name="email" // Add name attribute
                 className="w-full px-4 py-2 bg-highlight/5 border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
                 placeholder="your.email@example.com"
                 required
+                disabled={status === "submitting"}
               />
             </div>
 
@@ -107,8 +147,10 @@ const Contact = () => {
               </label>
               <select
                 id="subject"
+                name="subject" // Add name attribute
                 className="w-full px-4 py-2 bg-highlight/5 border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
                 required
+                disabled={status === "submitting"}
               >
                 <option value="">Select a subject</option>
                 <option value="online-coaching">Online Coaching</option>
@@ -124,15 +166,33 @@ const Contact = () => {
               </label>
               <textarea
                 id="message"
+                name="message" // Add name attribute
                 rows={5}
                 className="w-full px-4 py-2 bg-highlight/5 border border-accent/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-accent/50"
                 placeholder="Tell me about your fitness goals..."
                 required
+                disabled={status === "submitting"}
               ></textarea>
             </div>
 
-            <Button type="submit" variant="secondary" className="w-full">
-              Send Message
+            {status === "success" && (
+              <p className="mb-4 text-green-600 bg-green-100 border border-green-300 p-3 rounded-lg">
+                Message sent successfully! I&apos;ll get back to you soon.
+              </p>
+            )}
+            {status === "error" && (
+              <p className="mb-4 text-red-600 bg-red-100 border border-red-300 p-3 rounded-lg">
+                Error: {errorMessage || "Could not send message."}
+              </p>
+            )}
+
+            <Button
+              type="submit"
+              variant="secondary"
+              className="w-full"
+              disabled={status === "submitting"}
+            >
+              {status === "submitting" ? "Sending..." : "Send Message"}
             </Button>
           </form>
         </div>

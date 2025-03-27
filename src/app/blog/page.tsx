@@ -93,7 +93,7 @@ export default function BlogPage() {
         {/* Category Filters */}
         <div className="mb-8 flex justify-center">
           <div className="inline-flex p-1 bg-highlight/10 rounded-full">
-            <button className="px-4 py-2 rounded-full bg-highlight text-foreground">All</button>
+            <button className="px-4 py-2 rounded-full bg-accent text-white">All</button>
             <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Gym</button>
             <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Nutrition</button>
             <button className="px-4 py-2 rounded-full hover:bg-highlight/20 transition-colors">Lifestyle</button>
@@ -123,10 +123,10 @@ export default function BlogPage() {
                   <span className="text-xs text-accent">{post.date}</span>
                 </div>
                 
-                <h3 className="text-xl font-bold mb-2 text-gray-800 dark:text-white">{post.title}</h3>
-                <p className="mb-4 text-gray-700 dark:text-gray-300">{post.excerpt}</p>
+                <h3 className="text-xl font-bold mb-2 text-gray-800">{post.title}</h3>
+                <p className="mb-4 text-gray-700">{post.excerpt}</p>
                 
-                <Button href={`/blog/${post.id}`} variant="outline" className="w-full text-gray-800 dark:text-white">
+                <Button href={`/blog/${post.id}`} variant="outline" className="w-full text-gray-800">
                   Read More
                 </Button>
               </div>
