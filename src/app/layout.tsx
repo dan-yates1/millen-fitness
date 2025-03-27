@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import SessionProviderWrapper from "@/components/providers/SessionProviderWrapper"; // Import the wrapper
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
-      >
-        {children}
-        <Analytics />
-      </body>
+         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background text-foreground`}
+       >
+         {/* Wrap children with the SessionProviderWrapper */}
+         <SessionProviderWrapper>
+           {children}
+           <Analytics />
+         </SessionProviderWrapper>
+       </body>
     </html>
   );
 }
