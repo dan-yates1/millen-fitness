@@ -27,9 +27,9 @@ const InstagramFeed = () => {
             <div className="relative aspect-square overflow-hidden rounded-lg shadow-md hover:opacity-90 transition-opacity">
               <Image
                 src={post.imageUrl}
-                alt={`Instagram post ${post.id}`}
-                layout="fill"
-                objectFit="cover"
+                alt={`Millen Fitness Instagram post ${post.id}`} // Slightly more descriptive alt text
+                fill
+                className="object-cover" // Use className for object-fit
               />
             </div>
           </Link>

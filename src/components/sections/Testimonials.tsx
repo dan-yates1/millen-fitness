@@ -67,9 +67,9 @@ const Testimonials = () => {
             <div className="relative aspect-w-16 aspect-h-9 w-full h-64"> {/* Added relative positioning */}
               <Image
                 src="/testimonials/transformation-1.jpg"
-                alt="Client transformation 1"
-                layout="fill"
-                objectFit="cover"
+                alt="Before and after photo showing client's 12-week body transformation"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="p-4">
@@ -86,9 +86,9 @@ const Testimonials = () => {
             <div className="relative aspect-w-16 aspect-h-9 w-full h-64"> {/* Added relative positioning */}
               <Image
                 src="/testimonials/transformation-2.jpg"
-                alt="Client transformation 2"
-                layout="fill"
-                objectFit="cover"
+                alt="Before and after photo showing client's 8-week body transformation"
+                fill
+                className="object-cover"
               />
             </div>
             <div className="p-4">
